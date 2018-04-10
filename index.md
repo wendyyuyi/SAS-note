@@ -43,5 +43,8 @@ run;
 
 ### The VAR statement selects variables to include in the report and specifies their order.
 proc print data=orion.sales;
-  var last_name first_name;
+  var last_name first_name Salary;
+  where Salary<25000 AND Job_Title contains 'rep' or Job_Title ? 'rep';
 run;
+
+![image]
