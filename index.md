@@ -48,5 +48,5 @@ proc print data=orion.sales;
 run;
 
 ![image]
-(http://github.com/wendyyuyi/SAS-note/sas.png)
+(https://github.com/wendyyuyi/SAS-note/blob/master/sas.png)
 
