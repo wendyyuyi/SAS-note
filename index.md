@@ -50,3 +50,29 @@ run;
 ![image]
 (https://github.com/wendyyuyi/SAS-note/blob/master/sas.png)
 
+###  A percent sign (%) specifies that any number of characters can occupy that position.
+###  An underscore (_) specifies that exactly one character must occupy that position.
+
+### The ID statement specifies the variable or variables to print at the beginning of each row instead of an observation number.
+	ID variables;
+	
+	
+### Sort procedure
+proc sort data=orion.sales
+	  out= work.sales;
+     by Salary;
+run;
+
+### Displaying Titles and Footnotes
+title1 'I'm title!';
+footnote1 'hello';
+
+
+
+title;
+footnote;
+
+![title & footnode]
+(https://github.com/wendyyuyi/SAS-note/blob/master/title.png)
+
+
