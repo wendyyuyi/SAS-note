@@ -54,7 +54,8 @@ run;
 ###  An underscore (_) specifies that exactly one character must occupy that position.
 
 ### The ID statement specifies the variable or variables to print at the beginning of each row instead of an observation number.
-	ID variables;
+	
+ID variables;
 	
 	
 ### Sort procedure
@@ -75,4 +76,11 @@ footnote;
 ![title & footnode]
 (https://github.com/wendyyuyi/SAS-note/blob/master/title.png)
 
+### Use a LABEL statement and the LABEL option to display descriptive column headings instead of variable names.
+
+### The FORMAT statement associates a format with a variable.
+proc print data=orion.sales noobs;
+	format Salary dollar8. Hire_Date mmddyy10.;
+	var Last_Name First_Name Job_Title Salary Hire_Date;
+run;
 
