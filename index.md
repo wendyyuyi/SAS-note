@@ -84,3 +84,23 @@ proc print data=orion.sales noobs;
 	var Last_Name First_Name Job_Title Salary Hire_Date;
 run;
 
+##################################################
+proc format;
+	value tiers 0-49999='tier 1' 50000-99999='tier 2' 100000-250000='tier 3';
+run;
+data work.salaries;
+	input Name $ salary;
+	datalines;
+Abi 50000
+Mike 65000
+Jose 50000.00
+Joe 37000.50
+Ursula 142000
+;
+
+proc print data=work.salaries;
+	format salary tiers.;
+run;
+##################################################
+
+
