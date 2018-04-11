@@ -106,8 +106,7 @@ run;
 
 ##################################################
 
-%% Character formats must have a dollar sign as the first character and a letter or underscore as the second character.	
-
+<!--- Character formats must have a dollar sign as the first character and a letter or underscore as the second character.	 -->
 proc format;
    value $gender 'F'='Female'
                  'M'='Male'
