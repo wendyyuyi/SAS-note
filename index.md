@@ -118,3 +118,19 @@ proc format;
       100000-500000='$100,000 or more'
               other='Invalid salary';
 run;
+
+proc print data=orion.nonsales;
+   var Employee_ID Job_Title Salary Gender;
+   format Salary salrange. Gender $gender.;
+run;
+
+### Using a SAS Data Set as Input
+
+data work.subset;
+
+<font color="red">set orion.sales;<font>
+	where Country='AU' and Job_Title contains 'Rep';
+run;
+
+proc print data= work.subset;
+run;
