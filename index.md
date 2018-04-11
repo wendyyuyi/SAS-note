@@ -127,8 +127,7 @@ run;
 ### Using a SAS Data Set as Input
 
 data work.subset;
-
-<font color="red">set orion.sales;<font>
+	**set orion.sales;** 
 	where Country='AU' and Job_Title contains 'Rep';
 run;
 
