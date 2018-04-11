@@ -1,37 +1,86 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/wendyyuyi/wendyyuyi.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+### DATA steps typically create SAS data sets.
+data text;
+  infile ".csv" dlm="";
+  input first$ second$ ;
+run;
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### PROC steps typically process SAS data sets to generate reports and graphs, and to manage data.
+proc print data=text;
+run;
+  
+proc means data= text;
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+data  ;
+  length firstname $ 12;
+  infile ".csv" dlm=",";
+  input firstname $ ;
+run;
 
-```markdown
-Syntax highlighted code block
+### Use PROC CONTENTS to display the descriptor portion of a SAS data set.
 
-# Header 1
-## Header 2
-### Header 3
+proc contents data= text;
+run;
 
-- Bulleted
-- List
+### A blank represents a missing character value.
+### A period(.) represents a missing numeric value.
 
-1. Numbered
-2. List
+### Work is a temporary library where you can store and access SAS data sets for the duration of the SAS session. It is the default library.
+When a data set is in the temporary Work library, you can use a one-level name (for example, newsalesemps).
 
-**Bold** and _Italic_ and `Code` text
+### Sashelp is a permanent library that contains sample SAS data sets you can access during your SAS session.
 
-[Link](url) and ![Image](src)
-```
+data work.donations;
+	infile "&path\donation.dat";
+	input Employee_ID Qtr1 Qtr2 Qtr3 Qtr4;
+	Total=mean(Qtr1,Qtr2,Qtr3,Qtr4); 
+run;
+proc contents data=work.donations;
+run;
+proc print data=work.donations; 
+run;
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### The VAR statement selects variables to include in the report and specifies their order.
+proc print data=orion.sales;
+  var last_name first_name Salary;
+  where Salary<25000 AND Job_Title contains 'rep' or Job_Title ? 'rep';
+run;
 
-### Jekyll Themes
+![image]
+(https://github.com/wendyyuyi/SAS-note/blob/master/sas.png)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/wendyyuyi/wendyyuyi.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+###  A percent sign (%) specifies that any number of characters can occupy that position.
+###  An underscore (_) specifies that exactly one character must occupy that position.
 
-### Support or Contact
+### The ID statement specifies the variable or variables to print at the beginning of each row instead of an observation number.
+	
+ID variables;
+	
+	
+### Sort procedure
+proc sort data=orion.sales
+	  out= work.sales;
+     by Salary;
+run;
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Displaying Titles and Footnotes
+title1 'I'm title!';
+footnote1 'hello';
+
+
+
+title;
+footnote;
+
+![title & footnode]
+(https://github.com/wendyyuyi/SAS-note/blob/master/title.png)
+
+### Use a LABEL statement and the LABEL option to display descriptive column headings instead of variable names.
+
+### The FORMAT statement associates a format with a variable.
+proc print data=orion.sales noobs;
+	format Salary dollar8. Hire_Date mmddyy10.;
+	var Last_Name First_Name Job_Title Salary Hire_Date;
+run;
+
