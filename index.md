@@ -20,6 +20,7 @@ run;
 
 ### Use PROC CONTENTS to display the descriptor portion of a SAS data set.
 
+
 proc contents data= text;
 run;
 
@@ -85,6 +86,7 @@ proc print data=orion.sales noobs;
 run;
 
 ##################################################
+
 proc format;
 	value tiers 0-49999='tier 1' 50000-99999='tier 2' 100000-250000='tier 3';
 run;
@@ -101,6 +103,7 @@ Ursula 142000
 proc print data=work.salaries;
 	format salary tiers.;
 run;
+
 ##################################################
 
 
